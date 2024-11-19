@@ -68,5 +68,8 @@
     },
     "useInferencePlugins": false,
     "defaultBase": "master",
-    "useLegacyCache": true
+    "useLegacyCache": true,
+    "projects": {
+        "my-app": "apps/my-app"
+    }
 }
