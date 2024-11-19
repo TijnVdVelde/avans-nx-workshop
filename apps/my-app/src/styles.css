@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+.active {
+    font-weight: bold;
+}
+
+.content-area {
+    /* background: #f7f7ff; */
+}
+
+.page-navbar {
+    background: #eeeeeec4;
+}
+
+.page-footer {
+    background: #eeeeeec4;
+}
+
+.card {
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #d4d4d4;
+    border-radius: 0.35rem;
+    margin-bottom: 1.5rem;
+}

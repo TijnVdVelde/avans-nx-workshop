@@ -1,0 +1,33 @@
+<h1>User list</h1>
+<p>Hier vind je een overzicht van de users in dit systeem.</p>
+
+@if(!users) {
+<p>Loading data...</p>
+} @else if(users && users.length === 0) {
+<p>No users were found.</p>
+} @else {
+<table class="table table-border table-hover">
+    <thead>
+        <tr>
+            <!-- <th>id</th> -->
+            <th>Name</th>
+            <th>Email</th>
+            <th>isActive</th>
+            <th>ImageUrl</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <!-- <td>{{ user._id }}</td> -->
+            <td>
+                <a routerLink="{{ user._id }}">
+                    {{ user.name }}
+                </a>
+            </td>
+            <td>{{ user.emailAddress }}</td>
+            <td>{{ user.isActive }}</td>
+            <td>{{ user.profileImgUrl }}</td>
+        </tr>
+    </tbody>
+</table>
+}
