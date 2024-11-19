@@ -1,27 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+/* Variabelen voor kleuren */
+:root {
+    --f1-red: #ff1e00;
+    --f1-black: #15151e;
+    --f1-gray: #f5f5f5;
+    --f1-white: #ffffff;
+}
 
-.active {
+/* Fonts laden */
+@font-face {
+    font-family: 'Formula1';
+    src: url('/assets/fonts/Formula1-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Formula1';
+    src: url('/assets/fonts/Formula1-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Algemene body styling */
+body {
+    font-family: 'Formula1', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--f1-black);
+    background-color: var(--f1-gray);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background: var(--f1-black); /* Zwarte achtergrond */
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .title {
+    font-family: 'Formula1', sans-serif;
+    font-size: 1.5rem;
+    color: var(--f1-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+}
+
+header .nav {
+    display: flex;
+    justify-content: center;
+    flex: 1; /* Zorgt dat links in het midden staan */
+}
+
+header .nav-link {
+    font-family: 'Formula1', sans-serif;
+    color: var(--f1-white); /* Witte tekstkleur */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    position: relative; /* Voor animatie */
+    transition: color 0.3s;
+}
+
+header .nav-link:hover {
+    color: var(--f1-red); /* Rood bij hover */
+}
+
+/* Active link styling */
+header .nav-link.active {
+    color: var(--f1-red); /* Rode kleur voor actieve link */
     font-weight: bold;
 }
 
-.content-area {
-    /* background: #f7f7ff; */
+/* Focus styling verwijderen */
+header .nav-link:focus {
+    outline: none;
+    color: var(--f1-red); /* Zorg dat focus consistent is met actief */
 }
 
-.page-navbar {
-    background: #eeeeeec4;
+/* Animatie onderlijn bij hover */
+header .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--f1-red);
+    transition: width 0.3s ease-in-out;
 }
 
-.page-footer {
-    background: #eeeeeec4;
+header .nav-link:hover::after {
+    width: 100%;
 }
 
-.card {
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #d4d4d4;
-    border-radius: 0.35rem;
-    margin-bottom: 1.5rem;
+/* Footer styling */
+footer {
+    background-color: var(--f1-black); /* Zwarte achtergrond */
+    color: var(--f1-white);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+footer a {
+    color: var(--f1-white);
+    text-decoration: none;
+    position: relative; /* Voor animatie */
+    transition: color 0.3s;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--f1-red);
+    transition: width 0.3s ease-in-out;
+}
+
+footer a:hover::after {
+    width: 100%; /* Lijn vult de breedte */
+}
+
+footer a:hover {
+    color: var(--f1-red); /* Tekst wordt rood bij hover */
+}
+
+/* Algemene sectiestyling */
+main {
+    background-color: var(--f1-white);
+    color: var(--f1-black);
+    padding: 2rem 0;
 }
