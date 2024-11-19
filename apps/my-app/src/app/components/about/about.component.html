@@ -1,1 +1,198 @@
-<p>about works!</p>
+<div class="container mx-auto p-8">
+    <section class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">About Page</h1>
+        <h2 class="text-2xl font-semibold mb-2">Naam en Studentnummer</h2>
+        <p class="text-lg">
+            Naam: <span class="font-semibold">Tijn Van de Velde</span>
+        </p>
+        <p class="text-lg">
+            Studentnummer:
+            <span class="font-semibold">2213640</span>
+        </p>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Beschrijving van de Casus</h2>
+        <p class="text-lg">
+            De applicatie is een informatiesysteem gericht op Formule
+            1-statistieken. Gebruikers kunnen gegevens bekijken en beheren over
+            Formule 1-coureurs, teams, en races. Daarnaast kunnen ze hun
+            favoriete coureurs en teams volgen en filteren op basis van
+            prestaties. Het systeem biedt een overzicht/detail-structuur en
+            CRUD-functionaliteit, ondersteund door een NestJs-backend en een SPA
+            gebouwd in een Nx monorepo.
+        </p>
+        <p class="text-lg">
+            Op dit moment gebruik ik een basisstructuur van gebruikers, maar
+            deze worden omgezet naar Formule 1-coureurs met uitgebreide
+            statistieken, zoals overwinningen, kampioenschappen en deelnames. De
+            gegevens worden opgehaald van de OpenF1 API (<a
+                href="https://openf1.org"
+                class="text-blue-500 underline"
+                >https://openf1.org</a
+            >), die uitgebreide informatie biedt over coureurs, races en
+            kampioenschappen.
+        </p>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">CRUD-functionaliteit</h2>
+        <p class="text-lg">
+            Het systeem ondersteunt de volgende CRUD-operaties (Create, Read,
+            Update, Delete) om data efficiënt te beheren:
+        </p>
+        <ul class="list-disc list-inside text-lg mb-4">
+            <li>
+                <strong>Create:</strong> Gebruikers kunnen nieuwe Formule 1-teams of races toevoegen.
+                Voor teams kunnen bijvoorbeeld naam, oprichtingsjaar en logo worden opgegeven.
+            </li>
+            <li>
+                <strong>Read:</strong> Gebruikers kunnen lijsten en details bekijken van coureurs, teams,
+                en races. Dit omvat statistieken zoals overwinningen, podiumplaatsen en 
+                aantal kampioenschappen.
+            </li>
+            <li>
+                <strong>Update:</strong> Bestaande gegevens zoals teamnamen, coureurinformatie of
+                race-resultaten kunnen worden bijgewerkt.
+            </li>
+            <li>
+                <strong>Delete:</strong> Gebruikers kunnen teams, coureurs of races verwijderen indien nodig,
+                mits er geen afhankelijkheden zijn.
+            </li>
+        </ul>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">API-functionaliteiten</h2>
+        <p class="text-lg">
+            De OpenF1 API biedt een breed scala aan functionaliteiten die in
+            dit project worden gebruikt:
+        </p>
+        <ul class="list-disc list-inside text-lg mb-4">
+            <li>
+                Ophalen van gedetailleerde informatie over Formule 1-coureurs, zoals
+                geboortedatum, nationaliteit, teams waarvoor ze hebben gereden en
+                het aantal behaalde overwinningen.
+            </li>
+            <li>
+                Toegang tot racegegevens, inclusief circuits, winnaars en data
+                van races per seizoen.
+            </li>
+            <li>
+                Informatie over kampioenschappen, inclusief het aantal behaalde
+                punten, posities in het klassement en andere statistieken.
+            </li>
+            <li>
+                Zoek- en filtermogelijkheden, zoals races zoeken op jaartal of
+                coureurs filteren op nationaliteit.
+            </li>
+        </ul>
+        <p class="text-lg">
+            Deze data wordt via de backend verwerkt en opgeslagen in een NoSQL-database, wat zorgt
+            voor een snelle toegang en schaalbaarheid van het systeem.
+        </p>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">ERD</h2>
+        <p class="text-lg mb-4">
+            Het ERD beschrijft de relaties tussen coureurs, teams, races, en
+            gebruikers. Hieronder worden de belangrijkste relaties uitgelegd:
+        </p>
+        <ul class="list-disc list-inside text-lg mb-4">
+            <li>
+                <strong>Coureurs:</strong> Elke coureur hoort bij precies één
+                team.
+            </li>
+            <li>
+                <strong>Teams:</strong> Een team kan meerdere coureurs hebben.
+            </li>
+            <li>
+                <strong>Races:</strong> Elke race bevat meerdere coureurs (die
+                eraan deelnemen).
+            </li>
+            <li>
+                <strong>Gebruikers:</strong> Een gebruiker kan favoriete
+                coureurs en teams opslaan, wat wordt vastgelegd in een
+                tussenliggende entiteit (favorieten).
+            </li>
+        </ul>
+        <p class="text-lg">(Deze afbeelding voeg ik later toe.)</p>
+    </section>
+
+    <section>
+        <h2 class="text-2xl font-semibold mb-4">Functionele Requirements</h2>
+        <table class="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="border border-gray-300 px-4 py-2 text-left">
+                        FR#
+                    </th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">
+                        User Story
+                    </th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">
+                        Acceptatiecriteria
+                    </th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">
+                        Prioriteit
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">FR1</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        Als gebruiker wil ik een lijst van alle Formule
+                        1-coureurs kunnen zien, zodanig dat ik hun statistieken
+                        kan bekijken.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        De lijst toont naam, team, aantal overwinningen, en
+                        kampioenschappen.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">Must have</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">FR2</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        Als gebruiker wil ik een detailpagina van een coureur
+                        kunnen openen, zodanig dat ik zijn prestaties in detail
+                        kan zien.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        Detailpagina bevat volledige coureursinformatie en races
+                        waaraan hij heeft deelgenomen.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">Must have</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">FR3</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        Als gebruiker wil ik mijn favoriete coureurs kunnen
+                        opslaan, zodanig dat ik deze snel terug kan vinden.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        Gebruiker kan op een coureur klikken en deze toevoegen
+                        aan zijn favorieten. Favorieten worden opgeslagen in een
+                        database en blijven bewaard bij opnieuw inloggen.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">Could have</td>
+                </tr>
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">FR4</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        Als gebruiker wil ik races kunnen filteren op jaartal,
+                        zodanig dat ik snel races uit een bepaald seizoen kan
+                        vinden.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        De filter toont alleen races binnen het opgegeven
+                        jaartal.
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">Must have</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
