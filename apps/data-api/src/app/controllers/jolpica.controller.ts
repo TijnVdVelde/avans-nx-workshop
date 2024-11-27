@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -41,6 +41,19 @@ export class JolpicaController {
             return updatedDriver;
         } catch (error) {
             throw new HttpException(`Failed to update driver: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Delete('drivers/:id')
+    async deleteDriver(@Param('id') id: string) {
+        try {
+            const deletedDriver = await this.driverModel.findByIdAndDelete(id);
+            if (!deletedDriver) {
+                throw new HttpException('Driver not found', HttpStatus.NOT_FOUND);
+            }
+            return { message: 'Driver deleted successfully' };
+        } catch (error) {
+            throw new HttpException(`Failed to delete driver: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

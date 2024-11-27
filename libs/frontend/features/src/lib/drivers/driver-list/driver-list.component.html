@@ -22,6 +22,7 @@
             <td>{{ driver.permanentNumber }}</td>
             <td>
                 <button class="btn btn-primary" [routerLink]="['/drivers', driver.driverId, 'edit']">Edit</button>
+                <button class="btn btn-danger" (click)="deleteDriver(driver)">Delete</button>
             </td>
         </tr>
     </tbody>

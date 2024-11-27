@@ -13,12 +13,26 @@ export class DriverListComponent implements OnInit {
     ngOnInit(): void {
         this.driverService.getDrivers().subscribe(
             (data) => {
-                console.log('Drivers data:', data); // Log the extracted array
-                this.drivers = data; // Assign the array to drivers
+                this.drivers = data; // Populate drivers array
             },
             (error) => {
                 console.error('Error fetching drivers:', error);
             }
         );
+    }
+
+    deleteDriver(driver: IDriverInfo): void {
+        if (confirm(`Are you sure you want to delete ${driver.givenName} ${driver.familyName}?`)) {
+            this.driverService.deleteDriver(driver._id!).subscribe(
+                () => {
+                    this.drivers = this.drivers.filter((d) => d._id !== driver._id); // Remove driver from array
+                    alert('Driver deleted successfully!');
+                },
+                (error) => {
+                    console.error('Error deleting driver:', error);
+                    alert('Failed to delete driver. Please try again.');
+                }
+            );
+        }
     }
 }
