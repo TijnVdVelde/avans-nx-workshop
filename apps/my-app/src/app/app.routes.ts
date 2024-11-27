@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
-import { UserDetailsComponent, UserEditComponent, UserListComponent, DriverListComponent, DriverCreateComponent } from '@avans-nx-workshop/features';
+import { UserDetailsComponent, UserEditComponent, UserListComponent, DriverListComponent } from '@avans-nx-workshop/features';
 
 export const appRoutes: Route[] = [
     // Default route
@@ -19,7 +19,6 @@ export const appRoutes: Route[] = [
 
     // Driver routes
     { path: 'drivers', component: DriverListComponent },
-    { path: 'drivers/create', component: DriverCreateComponent },
 
     // Wildcard route for undefined paths
     { path: '**', redirectTo: 'dashboard' }
