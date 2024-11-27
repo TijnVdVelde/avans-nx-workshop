@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -8,14 +8,24 @@ export class JolpicaController {
 
     @Get('drivers')
     async getDrivers() {
-        const drivers = await this.driverModel.find(); // Fetch all drivers from MongoDB
+        const drivers = await this.driverModel.find();
         return {
-            results: drivers, // Simplified response
+            results: drivers,
             info: {
                 version: '1.0',
                 type: 'list',
                 count: drivers.length
             }
         };
+    }
+
+    @Post('drivers')
+    async createDriver(@Body() driverData: any): Promise<any> {
+        try {
+            const newDriver = new this.driverModel(driverData);
+            return await newDriver.save();
+        } catch (error) {
+            throw new HttpException(`Failed to create driver: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
