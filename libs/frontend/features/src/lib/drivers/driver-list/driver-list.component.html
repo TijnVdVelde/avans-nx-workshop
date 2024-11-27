@@ -1,0 +1,23 @@
+<h1>Driver List</h1>
+<p>Here is a list of drivers:</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Driver ID</th>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Date of Birth</th>
+            <th>Permanent Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let driver of drivers">
+            <td>{{ driver.driverId }}</td>
+            <td>{{ driver.givenName }} {{ driver.familyName }}</td>
+            <td>{{ driver.nationality }}</td>
+            <td>{{ driver.dateOfBirth }}</td>
+            <td>{{ driver.permanentNumber }}</td>
+        </tr>
+    </tbody>
+</table>
