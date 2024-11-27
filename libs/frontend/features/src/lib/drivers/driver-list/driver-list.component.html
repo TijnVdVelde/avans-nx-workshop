@@ -10,6 +10,7 @@
             <th>Nationality</th>
             <th>Date of Birth</th>
             <th>Permanent Number</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@
             <td>{{ driver.nationality }}</td>
             <td>{{ driver.dateOfBirth }}</td>
             <td>{{ driver.permanentNumber }}</td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/drivers', driver.driverId, 'edit']">Edit</button>
+            </td>
         </tr>
     </tbody>
 </table>

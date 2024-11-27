@@ -1,0 +1,23 @@
+<h1>Edit Driver</h1>
+<form *ngIf="driver" (ngSubmit)="onSubmit()" #driverForm="ngForm">
+    <label for="driverId">Driver ID</label>
+    <input id="driverId" [(ngModel)]="driver.driverId" name="driverId" required disabled />
+
+    <label for="givenName">Given Name</label>
+    <input id="givenName" [(ngModel)]="driver.givenName" name="givenName" required />
+
+    <label for="familyName">Family Name</label>
+    <input id="familyName" [(ngModel)]="driver.familyName" name="familyName" required />
+
+    <label for="nationality">Nationality</label>
+    <input id="nationality" [(ngModel)]="driver.nationality" name="nationality" required />
+
+    <label for="dateOfBirth">Date of Birth</label>
+    <input id="dateOfBirth" type="date" [(ngModel)]="driver.dateOfBirth" name="dateOfBirth" required />
+
+    <label for="permanentNumber">Permanent Number</label>
+    <input id="permanentNumber" type="number" [(ngModel)]="driver.permanentNumber" name="permanentNumber" required />
+
+    <button type="submit" class="btn btn-primary" [disabled]="driverForm.invalid">Save Changes</button>
+</form>
+<p *ngIf="!driver">Loading driver details...</p>

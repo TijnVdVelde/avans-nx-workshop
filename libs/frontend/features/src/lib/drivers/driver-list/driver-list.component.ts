@@ -1,29 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { DriverService, IDriverInfo } from '../driver.service';
 
 @Component({
-    selector: 'avans-nx-workshop-driver-list',
+    selector: 'app-driver-list',
     templateUrl: './driver-list.component.html'
 })
-export class DriverListComponent implements OnInit, OnDestroy {
+export class DriverListComponent implements OnInit {
     drivers: IDriverInfo[] = []; // Initialize as an empty array
-    sub?: Subscription;
 
     constructor(private driverService: DriverService) {}
 
     ngOnInit(): void {
-        this.sub = this.driverService.getDrivers().subscribe({
-            next: (drivers) => {
-                this.drivers = drivers;
+        this.driverService.getDrivers().subscribe(
+            (data) => {
+                console.log('Drivers data:', data); // Log the extracted array
+                this.drivers = data; // Assign the array to drivers
             },
-            error: (err) => {
-                console.error('Error fetching drivers:', err);
+            (error) => {
+                console.error('Error fetching drivers:', error);
             }
-        });
-    }
-
-    ngOnDestroy(): void {
-        this.sub?.unsubscribe();
+        );
     }
 }

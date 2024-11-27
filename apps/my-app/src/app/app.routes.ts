@@ -6,7 +6,8 @@ import {
     UserEditComponent,
     UserListComponent,
     DriverListComponent,
-    DriverCreateComponent
+    DriverCreateComponent,
+    DriverEditComponent
 } from '@avans-nx-workshop/features';
 
 export const appRoutes: Route[] = [
@@ -19,5 +20,6 @@ export const appRoutes: Route[] = [
     { path: 'users/:id/edit', component: UserEditComponent },
     { path: 'drivers', component: DriverListComponent },
     { path: 'drivers/create', component: DriverCreateComponent },
+    { path: 'drivers/:id/edit', component: DriverEditComponent },
     { path: '**', redirectTo: 'dashboard' }
 ];

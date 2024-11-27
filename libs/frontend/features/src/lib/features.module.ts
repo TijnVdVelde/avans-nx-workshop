@@ -9,6 +9,7 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 import { DriverListComponent } from './drivers/driver-list/driver-list.component';
 import { DriverCreateComponent } from './drivers/driver-create/driver-create.component';
+import { DriverEditComponent } from './drivers/driver-edit/driver-edit.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule],
@@ -17,8 +18,16 @@ import { DriverCreateComponent } from './drivers/driver-create/driver-create.com
         UserListComponent,
         UserEditComponent,
         DriverListComponent,
-        DriverCreateComponent
+        DriverCreateComponent,
+        DriverEditComponent
     ],
-    exports: [UserDetailsComponent, UserListComponent, UserEditComponent, DriverListComponent, DriverCreateComponent]
+    exports: [
+        UserDetailsComponent,
+        UserListComponent,
+        UserEditComponent,
+        DriverListComponent,
+        DriverCreateComponent,
+        DriverEditComponent
+    ]
 })
 export class FeaturesModule {}

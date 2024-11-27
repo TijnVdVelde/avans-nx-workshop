@@ -21,12 +21,28 @@ export class DriverService {
     constructor(private http: HttpClient) {}
 
     getDrivers(): Observable<IDriverInfo[]> {
-        return this.http
-            .get<{ results: { results: IDriverInfo[] } }>(this.apiUrl)
-            .pipe(map((response) => response.results.results));
+        return this.http.get<{ results: IDriverInfo[] }>(this.apiUrl).pipe(
+            map((response) => response.results) // Extract the `results` array
+        );
+    }
+
+    getDriverById(driverId: string): Observable<IDriverInfo> {
+        return this.http.get<{ results: IDriverInfo }>(`${this.apiUrl}/${driverId}`).pipe(
+            map((response) => {
+                console.log('Driver fetched from API:', response.results); // Log the actual driver object
+                return response.results; // Return only the driver object
+            })
+        );
     }
 
     createDriver(driver: IDriverInfo): Observable<IDriverInfo> {
         return this.http.post<IDriverInfo>(this.apiUrl, driver);
+    }
+
+    updateDriver(driver: IDriverInfo): Observable<IDriverInfo> {
+        return this.http.put<IDriverInfo>(
+            `${this.apiUrl}/${driver._id}`, // Use `_id` from the driver object for the URL
+            driver
+        );
     }
 }
