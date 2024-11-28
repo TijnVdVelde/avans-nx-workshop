@@ -17,11 +17,11 @@ export class ConstructorEditComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const id = this.route.snapshot.paramMap.get('id')?.trim(); // Trim whitespace
+        const id = this.route.snapshot.paramMap.get('id')?.trim();
         if (id) {
             this.constructorService.getConstructorById(id).subscribe({
                 next: (data) => {
-                    console.log('Fetched constructor:', data); // Debugging log
+                    console.log('Fetched constructor:', data);
                     this.constructorData = data;
                 },
                 error: (err) => {

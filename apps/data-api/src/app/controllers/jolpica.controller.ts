@@ -14,11 +14,10 @@ export class JolpicaController {
     ) {}
 
     // Drivers Endpoints
-
     @Get('drivers')
     async getDrivers() {
         const drivers = await this.driverModel.find();
-        return drivers; // Return a flat array of drivers
+        return drivers;
     }
 
     @Get('drivers/:id')
@@ -67,17 +66,15 @@ export class JolpicaController {
     }
 
     // Constructors Endpoints
-
     @Get('constructors')
     async getConstructors() {
-        const constructors = await this.constructorModel.find(); // Fetch from MongoDB
+        const constructors = await this.constructorModel.find();
         if (constructors.length > 0) {
-            return constructors; // Return constructors directly if found in the database
+            return constructors;
         }
 
-        // Fallback to fetch from the external API
         const apiResponse = await this.jolpicaService.fetchConstructors();
-        return apiResponse; // Ensure this is already an array from the service
+        return apiResponse;
     }
 
     @Post('constructors')
@@ -93,12 +90,12 @@ export class JolpicaController {
     @Get('constructors/:id')
     async getConstructorById(@Param('id') id: string): Promise<any> {
         try {
-            const sanitizedId = id.trim(); // Sanitize the ID
+            const sanitizedId = id.trim();
             const constructor = await this.constructorModel.findById(sanitizedId);
             if (!constructor) {
                 throw new HttpException('Constructor not found', HttpStatus.NOT_FOUND);
             }
-            return constructor; // Return the constructor directly
+            return constructor;
         } catch (error) {
             throw new HttpException(`Failed to fetch constructor: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -131,7 +128,6 @@ export class JolpicaController {
     }
 
     // Manual Sync Endpoints
-
     @Post('sync/drivers')
     @HttpCode(204)
     async syncDrivers() {

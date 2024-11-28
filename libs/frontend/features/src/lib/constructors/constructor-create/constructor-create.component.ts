@@ -8,7 +8,7 @@ import { ConstructorService, IConstructorInfo } from '../constructor.service';
 })
 export class ConstructorCreateComponent {
     constructorData: IConstructorInfo = {
-        constructorId: '', // Include constructorId
+        constructorId: '',
         name: '',
         nationality: '',
         url: ''

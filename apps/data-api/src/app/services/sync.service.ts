@@ -40,7 +40,7 @@ export class SyncService {
                 await this.constructorModel.deleteMany({});
                 await this.constructorModel.insertMany(
                     constructors.map((c) => ({
-                        constructorId: c.constructorId, // Map constructorId from API
+                        constructorId: c.constructorId,
                         name: c.name,
                         url: c.url,
                         nationality: c.nationality

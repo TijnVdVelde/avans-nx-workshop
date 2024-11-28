@@ -7,22 +7,22 @@ import { DriverService, IDriverInfo } from '../driver.service';
     templateUrl: './driver-edit.component.html'
 })
 export class DriverEditComponent implements OnInit {
-    driver: IDriverInfo | null = null; // Initialize as null
+    driver: IDriverInfo | null = null;
 
     constructor(private driverService: DriverService, private route: ActivatedRoute, private router: Router) {}
 
     ngOnInit(): void {
-        const driverId = this.route.snapshot.paramMap.get('id'); // Extract driverId from route
+        const driverId = this.route.snapshot.paramMap.get('id');
         console.log('Driver ID from route:', driverId);
 
         if (driverId) {
             this.driverService.getDriverById(driverId).subscribe(
                 (driver) => {
-                    console.log('Fetched driver:', driver); // Debug fetched driver
-                    this.driver = driver; // Assign the extracted driver
+                    console.log('Fetched driver:', driver);
+                    this.driver = driver;
                 },
                 (error) => {
-                    console.error('Error fetching driver:', error); // Log API error
+                    console.error('Error fetching driver:', error);
                     alert('Failed to fetch driver details.');
                 }
             );
@@ -31,14 +31,14 @@ export class DriverEditComponent implements OnInit {
 
     onSubmit(): void {
         if (this.driver) {
-            console.log('Submitting updated driver:', this.driver); // Log driver on submit
+            console.log('Submitting updated driver:', this.driver);
             this.driverService.updateDriver(this.driver).subscribe(
                 () => {
                     alert('Driver updated successfully!');
-                    this.router.navigate(['/drivers']); // Redirect to driver list
+                    this.router.navigate(['/drivers']);
                 },
                 (error) => {
-                    console.error('Error updating driver:', error); // Log error
+                    console.error('Error updating driver:', error);
                     alert('Failed to update driver. Please try again.');
                 }
             );

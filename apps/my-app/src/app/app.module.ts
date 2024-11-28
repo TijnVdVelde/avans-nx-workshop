@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; // Add HttpClientModule for API calls
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -17,7 +17,7 @@ import { FeaturesModule } from '@avans-nx-workshop/features';
     declarations: [AppComponent, DashboardComponent, AboutComponent, HeaderComponent, FooterComponent],
     imports: [
         BrowserModule,
-        HttpClientModule, // Ensure HttpClientModule is added here
+        HttpClientModule,
         RouterModule.forRoot(appRoutes, {
             initialNavigation: 'enabledBlocking'
         }),

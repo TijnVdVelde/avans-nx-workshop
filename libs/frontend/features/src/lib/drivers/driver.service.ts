@@ -22,15 +22,15 @@ export class DriverService {
 
     getDrivers(): Observable<IDriverInfo[]> {
         return this.http.get<{ results: IDriverInfo[] }>(this.apiUrl).pipe(
-            map((response) => response.results) // Extract the `results` array
+            map((response) => response.results)
         );
     }
 
     getDriverById(driverId: string): Observable<IDriverInfo> {
         return this.http.get<{ results: IDriverInfo }>(`${this.apiUrl}/${driverId}`).pipe(
             map((response) => {
-                console.log('Driver fetched from API:', response.results); // Log the actual driver object
-                return response.results; // Return only the driver object
+                console.log('Driver fetched from API:', response.results);
+                return response.results;
             })
         );
     }
@@ -41,12 +41,12 @@ export class DriverService {
 
     updateDriver(driver: IDriverInfo): Observable<IDriverInfo> {
         return this.http.put<IDriverInfo>(
-            `${this.apiUrl}/${driver._id}`, // Use `_id` from the driver object for the URL
+            `${this.apiUrl}/${driver._id}`,
             driver
         );
     }
 
     deleteDriver(driverId: string): Observable<any> {
-        return this.http.delete(`${this.apiUrl}/${driverId}`); // Use DELETE request
+        return this.http.delete(`${this.apiUrl}/${driverId}`);
     }
 }

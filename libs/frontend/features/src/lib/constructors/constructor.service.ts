@@ -20,7 +20,7 @@ export class ConstructorService {
 
     getConstructors(): Observable<IConstructorInfo[]> {
         return this.http.get<{ results: IConstructorInfo[] }>(this.apiUrl).pipe(
-            map((response) => response.results || []) // Extract results or return an empty array
+            map((response) => response.results || [])
         );
     }
 
@@ -30,7 +30,7 @@ export class ConstructorService {
 
     getConstructorById(id: string): Observable<IConstructorInfo> {
         return this.http.get<{ results: IConstructorInfo }>(`${this.apiUrl}/${id}`).pipe(
-            map((response) => response.results) // Extract the `results` object
+            map((response) => response.results)
         );
     }
 
