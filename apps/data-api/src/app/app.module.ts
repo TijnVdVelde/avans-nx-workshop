@@ -9,8 +9,7 @@ import { AuthModule } from '@avans-nx-workshop/backend/auth';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DriverSchema } from './models/driver.model';
-import { TeamSchema } from './models/team.model';
-import { RaceSchema } from './models/race.model';
+import { ConstructorSchema } from './models/constructor.model';
 import { JolpicaService } from './services/jolpica.service';
 import { SyncService } from './services/sync.service';
 import { JolpicaController } from './controllers/jolpica.controller';
@@ -31,8 +30,7 @@ import { JolpicaController } from './controllers/jolpica.controller';
         }),
         MongooseModule.forFeature([
             { name: 'Driver', schema: DriverSchema },
-            { name: 'Team', schema: TeamSchema },
-            { name: 'Race', schema: RaceSchema }
+            { name: 'Constructor', schema: ConstructorSchema }
         ])
     ],
     controllers: [AppController, JolpicaController],

@@ -29,6 +29,16 @@
             </li>
             <li>
                 <a
+                    routerLink="/constructors"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="nav-link"
+                >
+                    Constructors
+                </a>
+            </li>
+            <li>
+                <a
                     routerLink="/users"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true }"
@@ -48,10 +58,5 @@
                 </a>
             </li>
         </ul>
-
-        <!-- Zoekveld rechts -->
-        <form class="search-form" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
-        </form>
     </div>
 </header>
