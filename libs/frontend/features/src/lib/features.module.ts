@@ -13,6 +13,7 @@ import { DriverEditComponent } from './drivers/driver-edit/driver-edit.component
 
 import { ConstructorListComponent } from './constructors/constructor-list/constructor-list.component';
 import { ConstructorCreateComponent } from './constructors/constructor-create/constructor-create.component';
+import { ConstructorEditComponent } from './constructors/constructor-edit/constructor-edit.component';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule],
@@ -24,8 +25,8 @@ import { ConstructorCreateComponent } from './constructors/constructor-create/co
         DriverCreateComponent,
         DriverEditComponent,
         ConstructorListComponent,
-        ConstructorCreateComponent
-
+        ConstructorCreateComponent,
+        ConstructorEditComponent
     ],
     exports: [
         UserDetailsComponent,
@@ -35,7 +36,8 @@ import { ConstructorCreateComponent } from './constructors/constructor-create/co
         DriverCreateComponent,
         DriverEditComponent,
         ConstructorListComponent,
-        ConstructorCreateComponent
+        ConstructorCreateComponent,
+        ConstructorEditComponent
     ]
 })
 export class FeaturesModule {}

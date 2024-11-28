@@ -90,6 +90,33 @@ export class JolpicaController {
         }
     }
 
+    @Get('constructors/:id')
+    async getConstructorById(@Param('id') id: string): Promise<any> {
+        try {
+            const sanitizedId = id.trim(); // Sanitize the ID
+            const constructor = await this.constructorModel.findById(sanitizedId);
+            if (!constructor) {
+                throw new HttpException('Constructor not found', HttpStatus.NOT_FOUND);
+            }
+            return constructor; // Return the constructor directly
+        } catch (error) {
+            throw new HttpException(`Failed to fetch constructor: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Put('constructors/:id')
+    async updateConstructor(@Param('id') id: string, @Body() updateData: any): Promise<any> {
+        try {
+            const updatedConstructor = await this.constructorModel.findByIdAndUpdate(id, updateData, { new: true });
+            if (!updatedConstructor) {
+                throw new HttpException('Constructor not found', HttpStatus.NOT_FOUND);
+            }
+            return updatedConstructor;
+        } catch (error) {
+            throw new HttpException(`Failed to update constructor: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @Delete('constructors/:id')
     async deleteConstructor(@Param('id') id: string) {
         try {

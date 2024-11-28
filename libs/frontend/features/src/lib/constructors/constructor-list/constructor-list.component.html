@@ -23,6 +23,7 @@
             <td>{{ constructor.nationality }}</td>
             <td><a [href]="constructor.url" target="_blank">Details</a></td>
             <td>
+                <button class="btn btn-primary" [routerLink]="['/constructors', constructor._id, 'edit']">Edit</button>
                 <button class="btn btn-danger" (click)="deleteConstructor(constructor)">Delete</button>
             </td>
         </tr>

@@ -7,3 +7,4 @@ export * from './lib/drivers/driver-create/driver-create.component';
 export * from './lib/drivers/driver-edit/driver-edit.component';
 export * from './lib/constructors/constructor-list/constructor-list.component';
 export * from './lib/constructors/constructor-create/constructor-create.component';
+export * from './lib/constructors/constructor-edit/constructor-edit.component';
