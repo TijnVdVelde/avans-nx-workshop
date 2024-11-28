@@ -11,7 +11,7 @@ export class UserService {
             _id: "1",
             name: "Tijn Van de Velde",
             emailAddress: "tmh.vandevelde@student.avans.nl",
-            role: UserRole.Unknown,
+            role: UserRole.Admin,
             gender: UserGender.Male,
             password: "secret",
             isActive: true,

@@ -1,20 +1,31 @@
 import { Route } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
-import { UserDetailsComponent, UserEditComponent, UserListComponent } from '@avans-nx-workshop/features';
+import {
+    UserDetailsComponent,
+    UserEditComponent,
+    UserListComponent,
+    DriverListComponent,
+    DriverCreateComponent,
+    DriverEditComponent,
+    ConstructorListComponent,
+    ConstructorCreateComponent,
+    ConstructorEditComponent
+} from '@avans-nx-workshop/features';
 
 export const appRoutes: Route[] = [
-    // Hier komen onze URLs te staan.
-    { path: '', pathMatch: 'full', redirectTo: 'dashboard'}, 
+    { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'about', pathMatch: 'full', component: AboutComponent },
-    { path: 'users', pathMatch: 'full', component: UserListComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'users', component: UserListComponent },
     { path: 'users/:id', component: UserDetailsComponent },
     { path: 'users/new', component: UserEditComponent },
     { path: 'users/:id/edit', component: UserEditComponent },
-
-
-
-
-    { path: '**', redirectTo: 'dashboard'}
+    { path: 'drivers', component: DriverListComponent },
+    { path: 'drivers/create', component: DriverCreateComponent },
+    { path: 'drivers/:id/edit', component: DriverEditComponent },
+    { path: 'constructors', component: ConstructorListComponent },
+    { path: 'constructors/create', component: ConstructorCreateComponent },
+    { path: 'constructors/:id/edit', component: ConstructorEditComponent },
+    { path: '**', redirectTo: 'dashboard' }
 ];

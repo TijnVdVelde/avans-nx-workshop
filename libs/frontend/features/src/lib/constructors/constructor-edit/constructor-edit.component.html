@@ -1,0 +1,41 @@
+<h1>Edit Constructor</h1>
+<p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
+<form *ngIf="constructorData" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="constructorId">Constructor ID</label>
+        <input
+            type="text"
+            id="constructorId"
+            [(ngModel)]="constructorData.constructorId"
+            name="constructorId"
+            class="form-control"
+            disabled
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="constructorData.name" name="name" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="nationality">Nationality</label>
+        <input
+            type="text"
+            id="nationality"
+            [(ngModel)]="constructorData.nationality"
+            name="nationality"
+            class="form-control"
+            required
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="url">Wikipedia URL</label>
+        <input type="url" id="url" [(ngModel)]="constructorData.url" name="url" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="button" class="btn btn-secondary" routerLink="/constructors">Cancel</button>
+</form>

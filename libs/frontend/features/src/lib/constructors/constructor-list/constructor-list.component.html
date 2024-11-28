@@ -1,0 +1,31 @@
+<h1>Constructors</h1>
+<p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+<p *ngIf="!constructors.length && !errorMessage">No constructors found.</p>
+
+<!-- Create Constructor Button -->
+<button class="btn btn-primary mb-3" routerLink="/constructors/create">Create New Constructor</button>
+
+<!-- Table of Constructors -->
+<table *ngIf="constructors.length" class="table">
+    <thead>
+        <tr>
+            <th>Constructor ID</th>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>More Info</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let constructor of constructors">
+            <td>{{ constructor.constructorId }}</td>
+            <td>{{ constructor.name }}</td>
+            <td>{{ constructor.nationality }}</td>
+            <td><a [href]="constructor.url" target="_blank">Details</a></td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/constructors', constructor._id, 'edit']">Edit</button>
+                <button class="btn btn-danger" (click)="deleteConstructor(constructor)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+<h1>Drivers</h1>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
+<p *ngIf="!drivers.length && !errorMessage">No drivers found.</p>
+
+<!-- Create New Driver Button -->
+<button class="btn btn-primary mb-3" routerLink="/drivers/create">Create New Driver</button>
+
+<!-- Drivers Table -->
+<table *ngIf="drivers.length" class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Date of Birth</th>
+            <th>Permanent Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let driver of drivers">
+            <td>{{ driver.givenName }} {{ driver.familyName }}</td>
+            <td>{{ driver.nationality }}</td>
+            <td>{{ driver.dateOfBirth }}</td>
+            <td>{{ driver.permanentNumber }}</td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['/drivers', driver.driverId, 'edit']">Edit</button>
+                <button class="btn btn-danger" (click)="deleteDriver(driver)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
