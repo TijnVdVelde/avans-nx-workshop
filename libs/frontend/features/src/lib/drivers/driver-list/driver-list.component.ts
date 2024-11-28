@@ -7,6 +7,7 @@ import { DriverService, IDriverInfo } from '../driver.service';
 })
 export class DriverListComponent implements OnInit {
     drivers: IDriverInfo[] = []; // Initialize as an empty array
+    errorMessage: string = '';
 
     constructor(private driverService: DriverService) {}
 

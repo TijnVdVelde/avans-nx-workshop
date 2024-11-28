@@ -1,11 +1,14 @@
-<h1>Driver List</h1>
-<p>Here is a list of drivers:</p>
+<h1>Drivers</h1>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
+<p *ngIf="!drivers.length && !errorMessage">No drivers found.</p>
+
+<!-- Create New Driver Button -->
 <button class="btn btn-primary mb-3" routerLink="/drivers/create">Create New Driver</button>
 
-<table class="table table-bordered table-hover">
+<!-- Drivers Table -->
+<table *ngIf="drivers.length" class="table">
     <thead>
         <tr>
-            <th>Driver ID</th>
             <th>Name</th>
             <th>Nationality</th>
             <th>Date of Birth</th>
@@ -15,7 +18,6 @@
     </thead>
     <tbody>
         <tr *ngFor="let driver of drivers">
-            <td>{{ driver.driverId }}</td>
             <td>{{ driver.givenName }} {{ driver.familyName }}</td>
             <td>{{ driver.nationality }}</td>
             <td>{{ driver.dateOfBirth }}</td>
