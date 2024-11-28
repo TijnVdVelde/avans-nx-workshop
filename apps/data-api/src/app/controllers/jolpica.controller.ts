@@ -39,7 +39,7 @@ export class JolpicaController {
             throw new HttpException(`Failed to create driver: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     @Put('drivers/:id')
     async updateDriver(@Param('id') id: string, @Body() updateData: any) {
         try {

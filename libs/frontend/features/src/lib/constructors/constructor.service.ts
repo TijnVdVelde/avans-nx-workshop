@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
 export interface IConstructorInfo {
-    _id?: string;
-    constructorId: string;
+    _id?: string; // MongoDB ID
+    constructorId: string; // Add constructorId
     name: string;
     nationality: string;
     url: string;
@@ -28,7 +28,7 @@ export class ConstructorService {
         return this.http.post<IConstructorInfo>(this.apiUrl, constructor);
     }
 
-    deleteConstructor(constructorId: string): Observable<any> {
-        return this.http.delete(`${this.apiUrl}/${constructorId}`);
+    deleteConstructor(_id: string): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/${_id}`);
     }
 }

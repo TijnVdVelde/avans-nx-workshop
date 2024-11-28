@@ -7,7 +7,7 @@ import { ConstructorService, IConstructorInfo } from '../constructor.service';
 })
 export class ConstructorListComponent implements OnInit {
     constructors: IConstructorInfo[] = [];
-    errorMessage = '';
+    errorMessage: string = '';
 
     constructor(private constructorService: ConstructorService) {}
 
@@ -15,10 +15,10 @@ export class ConstructorListComponent implements OnInit {
         this.constructorService.getConstructors().subscribe({
             next: (data) => {
                 if (Array.isArray(data)) {
-                    this.constructors = data; // Assign the array to the component property
+                    this.constructors = data;
                 } else {
                     console.error('Unexpected response:', data);
-                    this.errorMessage = 'Invalid data format received from the backend.';
+                    this.errorMessage = 'Invalid data format received.';
                 }
             },
             error: (err) => {
@@ -26,5 +26,27 @@ export class ConstructorListComponent implements OnInit {
                 this.errorMessage = 'Failed to load constructors.';
             }
         });
+    }
+
+    deleteConstructor(constructor: IConstructorInfo): void {
+        if (!constructor._id) {
+            console.error('Constructor ID (_id) is undefined:', constructor);
+            this.errorMessage = 'Unable to delete constructor. Invalid ID.';
+            return;
+        }
+
+        if (confirm(`Are you sure you want to delete ${constructor.name}?`)) {
+            this.constructorService.deleteConstructor(constructor._id).subscribe({
+                next: () => {
+                    // Remove the constructor from the list after successful deletion
+                    this.constructors = this.constructors.filter((c) => c._id !== constructor._id);
+                    console.log(`${constructor.name} deleted successfully.`);
+                },
+                error: (err) => {
+                    console.error('Error deleting constructor:', err);
+                    this.errorMessage = 'Failed to delete constructor.';
+                }
+            });
+        }
     }
 }

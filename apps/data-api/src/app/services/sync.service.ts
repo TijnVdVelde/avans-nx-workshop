@@ -38,7 +38,14 @@ export class SyncService {
 
             if (constructors && constructors.length > 0) {
                 await this.constructorModel.deleteMany({});
-                await this.constructorModel.insertMany(constructors);
+                await this.constructorModel.insertMany(
+                    constructors.map((c) => ({
+                        constructorId: c.constructorId, // Map constructorId from API
+                        name: c.name,
+                        url: c.url,
+                        nationality: c.nationality
+                    }))
+                );
                 this.logger.log(`Successfully synced ${constructors.length} constructors from Ergast API.`);
             } else {
                 this.logger.warn('No constructors found in the response from Ergast API.');
